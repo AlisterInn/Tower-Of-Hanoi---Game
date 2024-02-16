@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="controls">
+    <form method="post">
+      <label for="towers">Number of towers</label>
+      <select name="towers">
+        {% for i in [3, 2, 4, 5, 6] %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </select>
+      <label for="disks">Number of disks</label>
+      <select name="disks">
+        {% for i in [3, 1, 2, 4, 5, 6] %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </select>
+      <button name="reset">Reset</button>
+    </form>
+    </div>
+    <div class="game-board">
+      {% for i in range(0, towers) %}
+      <div class="tower {% if i == 0 %}src{% elif i == towers-1 %}dst{% endif %}">
+        {% for value in stacks[i] %}
+            <div class="disk" style="width: {{value}}%; bottom: {{(stacks[i]|length-loop.index)*22}}px;"></div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="controls">
+        <form method="post">
+            <p>
+            From: 
+            {% for i in range(0, towers) %}
+            <input type="radio" name="from" value="{{i}}" required><label for="{{tower ~ i}}">{{'Tower ' ~ (i+1)}}</label>
+            {% endfor %}
+            </p>
+            <p>
+            To: 
+            {% for i in range(0, towers) %}
+            <input type="radio" name="to" value="{{i}}" required><label for="{{i}}">{{'Tower ' ~ (i+1)}}</label>
+            {% endfor %}
+            </p>
+            {% if gameActive %}<button name="move">Make the move</button>{% endif %}
+        </form>
+    </div>
+    <div class="flash-div">
+      Total steps: {{ counter }}
+    </div>
+    <div class="flash-div">
+      {% for mesg in get_flashed_messages() %}
+      <div class="flashes">{{ mesg }}</div>
+      {% endfor %}
+    </div>
+
+
+  </body>
+</html>

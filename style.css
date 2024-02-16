@@ -1,0 +1,55 @@
+.game-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+  }
+
+  .controls, .flash-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  .tower {
+    width: 150px;
+    height: 400px;
+    background-color: #ccc;
+    margin: 0 50px;
+    position: relative;
+  }
+
+  .src{
+    background-color: lightblue !important;
+  }
+
+  .dst{
+    background-color: lightgreen !important;
+  }
+
+
+  .disk {
+    width: 50px;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: gray;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .flashes{
+    color: green;
+    padding: 10px;
+    font-size: 12pt;
+    font-weight: bold;
+}
